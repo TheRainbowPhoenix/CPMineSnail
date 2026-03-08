@@ -28,7 +28,7 @@ int main(){
 		texture = SDL_CreateTexture(renderer,SDL_PIXELFORMAT_RGBA8888,SDL_TEXTUREACCESS_TARGET,320,528);
 	#else
 		vram = LCD_GetVRAMAddress();
-		uint32_t w, h;
+		unsigned int w, h;
 		LCD_GetSize(&w, &h);
 		width = w;
 		height = h;
