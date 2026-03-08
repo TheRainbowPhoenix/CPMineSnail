@@ -798,7 +798,7 @@ void main2(){
 						switch(event.key.keysym.sym) {
 				#else
 					if (event.type==EVENT_KEY&&event.data.key.direction==KEY_PRESSED){
-						switch(event.data.key.keyCode) {
+						switch((int)event.data.key.keyCode) {
 				#endif
 							case K_QUIT:
 							#ifdef K_QUIT2
