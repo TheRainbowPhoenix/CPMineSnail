@@ -1,6 +1,5 @@
-*.o
-*.hhk
-*.elf
-calc.cpp
-calc.hpp
-sdl.txt
+dist/
+obj/
+.cache/
+.deps/
+compile_commands.json

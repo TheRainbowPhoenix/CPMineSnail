@@ -1,5 +1,5 @@
-#include "calc.hpp"
-//#include "input.hpp"
+#include "calc.h"
+//#include "input.h"
 
 #include "options.h"
 
@@ -8,9 +8,9 @@
 	APP_DESCRIPTION("Minesweeper, use keys 3 to 9 or '<-' to start a new the game. github.com/SnailMath/CPMineSnail")
 	APP_AUTHOR("SnailMath")
 	APP_VERSION("1.0.0")
-	#include <sdk/os/mem.hpp>
-	#include <sdk/os/input.hpp>
-//#include <sdk/os/input.hpp>
+	#include <string.h>
+	#include <sdk/os/input.h>
+//#include <sdk/os/input.h>
 #endif
 
 #define VIEWSTEP 4 // 2^4=16 steps
@@ -774,11 +774,11 @@ void main2(){
 				SDL_Event event;
 				while(SDL_PollEvent(&event)){
 			#else
-				struct InputEvent event;
+				struct Input_Event event __attribute__((aligned(4)));
 				memset(&event, 0, sizeof(event));
 				//int loop_i = 1; // exit the loop even if ther are still touch events so the dragging is more fluid
 				/*do*/{ 
-					GetInput(&event, 0xffffffff, 0x10);
+					GetInput(&event, 0, 0x10);
 			#endif
 				#ifdef PC
 					if (event.type==SDL_QUIT){
@@ -798,7 +798,7 @@ void main2(){
 						switch(event.key.keysym.sym) {
 				#else
 					if (event.type==EVENT_KEY&&event.data.key.direction==KEY_PRESSED){
-						switch(event.data.key.keyCode) {
+						switch((int)event.data.key.keyCode) {
 				#endif
 							case K_QUIT:
 							#ifdef K_QUIT2
